@@ -1,7 +1,12 @@
 package mpn.indomaret.demo.controllers;
 
 import lombok.RequiredArgsConstructor;
+import mpn.indomaret.demo.response.ResponseMessage;
+import mpn.indomaret.demo.services.IndexService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class IndexController {
 
-    public String
+    private final IndexService indexService;
+
+    @GetMapping("")
+    public ResponseEntity<ResponseMessage> index() {
+        try {
+            return indexService.index();
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ResponseMessage(500, "ERROR", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
