@@ -39,7 +39,7 @@ public class StoreService {
         if (store.isPresent()) {
             return new ResponseEntity<>(new ResponseMessage(200, "OK", store.get()), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", ""), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", "Store ID not found!"), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -50,7 +50,7 @@ public class StoreService {
             List<Store> stores = storeRepository.findByBranchId(branchExist.get().getId());
             return new ResponseEntity<>(new ResponseMessage(200, "OK", stores), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", ""), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", "Branch name not found"), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -64,22 +64,26 @@ public class StoreService {
 
             return new ResponseEntity<>(new ResponseMessage(200, "OK", provinceStores), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", ""), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", "Province name not found!"), HttpStatus.NOT_FOUND);
         }
     }
 
     public ResponseEntity<ResponseMessage> editStore(int id, Store store) {
-        Optional<Store> storeOptional = storeRepository.findById(id);
+        Optional<Store> storeExists = storeRepository.findById(id);
 
-        if (storeOptional.isPresent()) {
-            storeOptional.get().setName(store.getName());
-            storeOptional.get().setAddress(store.getAddress());
-            storeOptional.get().setBranchId(store.getBranchId());
-            storeRepository.save(storeOptional.get());
+        if (storeExists.isPresent()) {
+            if (branchRepository.findById(store.getBranchId()).isEmpty()) {
+                return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", "Branch ID not found!"), HttpStatus.NOT_FOUND);
+            }
+
+            storeExists.get().setName(store.getName());
+            storeExists.get().setAddress(store.getAddress());
+            storeExists.get().setBranchId(store.getBranchId());
+            storeRepository.save(storeExists.get());
 
             return new ResponseEntity<>(new ResponseMessage(200, "OK", "Store updated!"), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", ""), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", "Store ID not found!"), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -89,6 +93,10 @@ public class StoreService {
         if (storeExist.isPresent()) {
             return new ResponseEntity<>(new ResponseMessage(409, "CONFLICT", "Store already exists!"), HttpStatus.NOT_FOUND);
         } else {
+            if (branchRepository.findById(store.getBranchId()).isEmpty()) {
+                return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", "Branch ID not found!"), HttpStatus.NOT_FOUND);
+            }
+
             storeRepository.save(store);
             return new ResponseEntity<>(new ResponseMessage(200, "OK", "Store added!"), HttpStatus.OK);
         }
@@ -101,7 +109,7 @@ public class StoreService {
             storeRepository.deleteById(storeOptional.get().getId());
             return new ResponseEntity<>(new ResponseMessage(200, "OK", "Store deleted!"), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", ""), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseMessage(404, "NOT FOUND", "Store ID not found"), HttpStatus.NOT_FOUND);
         }
     }
 
