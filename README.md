@@ -12,6 +12,7 @@ This project is built on Spring Boot using MVC project structure in order to ful
 ## Requirements for Local Development & Runtime
 
 - Java Development Kit 17+
+- MySQL 8+
 - Intellij Idea
 - Postman (Testing)
 ## Environment Variables
