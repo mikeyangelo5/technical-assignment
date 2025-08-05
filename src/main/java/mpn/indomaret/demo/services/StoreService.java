@@ -24,7 +24,7 @@ public class StoreService {
     private final ProvinceRepository provinceRepository;
 
     public ResponseEntity<ResponseMessage> getStores() {
-        List<Store> stores = storeRepository.findAll();
+        List<Store> stores = storeRepository.findAllByOrderByIdAsc();
         return new ResponseEntity<>(new ResponseMessage(200, "OK", stores), HttpStatus.OK);
     }
 
