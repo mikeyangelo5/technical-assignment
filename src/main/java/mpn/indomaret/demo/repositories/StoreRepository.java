@@ -17,6 +17,5 @@ public interface StoreRepository extends JpaRepository<Store, Integer> {
     Optional<Store> findByName(String name);
     Store save(Store store);
     void deleteById(int id);
-    List<Store> findAllByOrderByIdAsc();
 
 }

@@ -8,17 +8,12 @@ import mpn.indomaret.demo.repositories.BranchRepository;
 import mpn.indomaret.demo.repositories.ProvinceRepository;
 import mpn.indomaret.demo.repositories.StoreRepository;
 import mpn.indomaret.demo.response.ResponseMessage;
-import org.apache.coyote.Response;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
