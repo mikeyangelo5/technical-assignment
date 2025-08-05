@@ -74,7 +74,7 @@ public class BranchService {
             branchRepository.save(branch);
             logger.info("SUCCESS - branch {} created", branch.getName());
 
-            return new ResponseEntity<>(new ResponseMessage(200, "OK", "Branch added!"), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseMessage(200, "OK", branch), HttpStatus.OK);
         }
     }
 

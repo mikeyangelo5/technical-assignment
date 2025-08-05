@@ -120,7 +120,7 @@ public class StoreService {
             storeRepository.save(store);
             logger.info("SUCCESS - adding store with name: {}", store.getName());
 
-            return new ResponseEntity<>(new ResponseMessage(200, "OK", "Store added!"), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseMessage(200, "OK", store), HttpStatus.OK);
         }
     }
 

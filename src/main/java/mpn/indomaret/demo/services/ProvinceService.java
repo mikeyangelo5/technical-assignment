@@ -49,7 +49,7 @@ public class ProvinceService {
             provinceRepository.save(provinceExist.get());
             logger.info("SUCCESS - updating province with id: {}", id);
 
-            return new ResponseEntity<>(new ResponseMessage(200, "OK", provinceExist.get()), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseMessage(200, "OK", "Province updated!"), HttpStatus.OK);
         } else {
             logger.warn("NOT FOUND - attempting to update a province with non existing id: {}", id);
 
