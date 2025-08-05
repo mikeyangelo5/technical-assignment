@@ -20,7 +20,7 @@ public class BranchService {
 
     public final BranchRepository branchRepository;
     public final ProvinceRepository provinceRepository;
-    private static final Logger logger = LogManager.getLogger(StoreService.class);
+    private static final Logger logger = LogManager.getLogger(BranchService.class);
 
     public ResponseEntity<ResponseMessage> getBranches() {
         List<Branch> branches = branchRepository.findAll();

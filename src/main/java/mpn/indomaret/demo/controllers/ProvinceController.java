@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProvinceController {
 
     private final ProvinceService provinceService;
-    private static final Logger logger = LogManager.getLogger(StoreService.class);
+    private static final Logger logger = LogManager.getLogger(ProvinceController.class);
 
     @GetMapping("")
     public ResponseEntity<ResponseMessage> getAllProvinces() {

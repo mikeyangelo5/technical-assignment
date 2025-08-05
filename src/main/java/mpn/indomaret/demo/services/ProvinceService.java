@@ -18,7 +18,7 @@ import java.util.Optional;
 public class ProvinceService {
 
     private final ProvinceRepository provinceRepository;
-    private static final Logger logger = LogManager.getLogger(StoreService.class);
+    private static final Logger logger = LogManager.getLogger(ProvinceService.class);
 
     public ResponseEntity<ResponseMessage> allProvinces() {
         List<Province> provinces = provinceRepository.findAll();

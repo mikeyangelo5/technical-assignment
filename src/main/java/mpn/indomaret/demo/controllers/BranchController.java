@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class BranchController {
 
     private final BranchService branchService;
-    private static final Logger logger = LogManager.getLogger(StoreService.class);
+    private static final Logger logger = LogManager.getLogger(BranchController.class);
 
     @GetMapping("")
     public ResponseEntity<ResponseMessage> allBranches() {

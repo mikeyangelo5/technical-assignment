@@ -9,7 +9,7 @@ import org.apache.logging.log4j.*;
 @Service
 public class IndexService {
 
-    private static final Logger logger = LogManager.getLogger(StoreService.class);
+    private static final Logger logger = LogManager.getLogger(IndexService.class);
 
     public ResponseEntity<ResponseMessage> index() {
         logger.info("SUCCESS - fetching index");

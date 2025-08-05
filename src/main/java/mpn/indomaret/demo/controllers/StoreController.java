@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class StoreController {
 
     private final StoreService storeService;
-    private static final Logger logger = LogManager.getLogger(StoreService.class);
+    private static final Logger logger = LogManager.getLogger(StoreController.class);
 
     @GetMapping("")
     public ResponseEntity<ResponseMessage> allStores() {
