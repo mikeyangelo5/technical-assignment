@@ -15,6 +15,13 @@ This project is built on Spring Boot using MVC project structure in order to ful
 - MySQL 8+
 - Intellij Idea
 - Postman (Testing)
+
+
+## Complete API Documentation
+
+[Postman documentation](https://documenter.getpostman.com/view/17953934/2sB3BBpBYE)
+
+
 ## Environment Variables
 
 To run this project on your local machine please edit the following database configuration fields in the `application.properties` file inside the `src/main/resources` folder before running the service
